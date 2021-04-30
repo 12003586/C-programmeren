@@ -58,8 +58,8 @@ int main()
 	
 	FILE* messagePointer = fopen(SECRETMESSAGE, "rb");
 	char str[MAXCHAR];
-	char ch;
-	int lengte = 0;
+	
+	
 	
 	if(messagePointer == NULL)
 	{
@@ -69,14 +69,10 @@ int main()
 	
 	if(fgets(str, MAXCHAR, messagePointer) != NULL)
 	{
-		puts(str);
+		printf("%s",str);
 	}
 	
-	while ((ch = fgetc(messagePointer)) != EOF)
-    {
-        lengte++;
-	}
-	printf("%d\n",lengte);
+	
 	
 	
     fclose(messagePointer);
