@@ -7,7 +7,9 @@
 
 #define BMPINPUTFILE "test.bmp"
 #define SECRETMESSAGE "message.txt"
-#define MAXCHAR 1000
+
+int messageSize();
+void readMessage();
 
 
 int main()
@@ -58,12 +60,40 @@ int main()
 	
 	
 	char * messageInput = (char*) malloc(messageSize());
+	printf("%d\n",messageSize());
 	
+	readMessage(messageInput);
 	
-	printf("%d\n"messageSize());
+	for(int i = 0; i<messageSize(); i++)
+	{
+		printf("%c", messageInput[i]);
+	}
+	
+	free(messageInput);
     
     return 0;
 }
+
+void readMessage(char* buffer)
+{
+	FILE* messagePointer = fopen(SECRETMESSAGE, "r");
+	
+	if(messagePointer == NULL)
+	{
+		printf("Something went wrong while trying to open %s\n", SECRETMESSAGE);
+		exit(EXIT_FAILURE);
+	}
+	
+	for(int i = 0; i< messageSize(); i++)
+	{
+		buffer[i]=0;
+	}
+	
+	fread(buffer, sizeof(char), messageSize(), messagePointer);
+	fclose(messagePointer);
+	
+}
+
 
 int messageSize()
 {
