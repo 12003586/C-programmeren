@@ -56,9 +56,18 @@ int main()
     free(inputPixels);
 	
 	
-	FILE* messagePointer = fopen(SECRETMESSAGE, "rb");
-	char str[MAXCHAR];
 	
+	char * messageInput = (char*) malloc(messageSize());
+	
+	
+	printf("%d\n"messageSize());
+    
+    return 0;
+}
+
+int messageSize()
+{
+	FILE* messagePointer = fopen(SECRETMESSAGE, "rb");
 	
 	
 	if(messagePointer == NULL)
@@ -67,15 +76,8 @@ int main()
 		exit(EXIT_FAILURE);
 	}
 	
-	if(fgets(str, MAXCHAR, messagePointer) != NULL)
-	{
-		printf("%s",str);
-	}
-	
-	
-	
-	
-    fclose(messagePointer);
-    
-    return 0;
+	fseek(messagePointer, 0, SEEK_END);
+	long int size = ftell(messagePointer);
+	fclose(messagePointer);
+	return size;
 }
