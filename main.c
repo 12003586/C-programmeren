@@ -1,5 +1,7 @@
 //gcc -Wall -pedantic main.c -o test.exe
 
+// Bo Mengels & Tibo Lambrechts
+
 #include <stdio.h>
 #include <stdlib.h>
 
