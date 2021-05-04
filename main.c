@@ -68,7 +68,8 @@ int main()
 	
 	for(int i = 0; i<messageSize(); i++)
 	{
-		printf("%c", messageInput[i]);
+		printf("%c\t", messageInput[i]);
+		printf("%d\n",messageInput[i]);
 	}
 	
 	free(messageInput);
