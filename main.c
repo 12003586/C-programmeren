@@ -69,8 +69,24 @@ int main()
 	for(int i = 0; i<messageSize(); i++)
 	{
 		printf("%c\t", messageInput[i]);
-		printf("%d\n",messageInput[i]);
+		printf("%d\t",messageInput[i]);
+		
+		for (int j = 7;  j >= 0; j--)
+		{
+			int binaer = messageInput[i] >> j;
+			if (binear & 1)
+			{
+				printf("1");
+			}
+			else 
+			{
+				printf("0");
+			}
+		}
+		printf("\n");
 	}
+	
+
 	
 	free(messageInput);
     
