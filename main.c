@@ -66,25 +66,38 @@ int main()
 	
 	readMessage(messageInput);
 	
-	for(int i = 0; i<messageSize(); i++)
+	int getal[7];
+	
+	for(int k = 0; k<messageSize(); k++)
 	{
-		printf("%c\t", messageInput[i]);
-		printf("%d\t",messageInput[i]);
+		printf("%c\t", messageInput[k]);
+		printf("%d\t",messageInput[k]);
 		
 		for (int j = 7;  j >= 0; j--)
 		{
-			int binaer = messageInput[i] >> j;
-			if (binear & 1)
+			int binaer = messageInput[k] >> j;
+			
+			if (binaer & 1)
 			{
-				printf("1");
+				getal[j]= 1;
 			}
 			else 
 			{
-				printf("0");
+				getal[j] = 0;
 			}
+		}
+		//om te kijken of het getal in een array staat
+		for ( int i = 7; i >=0 ; i--)
+		{
+			printf("%d", getal[i]);
 		}
 		printf("\n");
 	}
+	
+	
+
+	
+	
 	
 
 	
