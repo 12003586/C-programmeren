@@ -4,6 +4,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #define __DEBUG
 
@@ -12,10 +13,42 @@
 
 int messageSize();
 void readMessage();
+void printHelp();
 
-
-int main()
+int main(int argc, char*argv[])
 {
+	if(argc > 1)
+	{
+		for (int i = 0; i< argc; i++)
+		{
+			if(strcmp(argv[i], "--help")==0)
+			{
+				printHelp();
+			}
+			else if(strcmp(argv[i],"-c")==0)
+			{
+				char * compress = argv[i+1];
+			}
+			else if(strcmp(argv[i],"-s") == 0)
+			{
+				char * inputTextFile = argv[i+1];
+			}
+			else if(strcmp(argv[i],"-i") ==0)
+			{
+				char * inputBmpFile = argv[i+1];
+			}
+			else if(strcmp(argv[i],"-o")==0);
+			{
+				char * outputImageName = argv[i+1];
+			}
+		}
+	}
+	else
+	{
+		printHelp();
+	}
+	
+
     #ifdef __DEBUG
         printf("DEBUG info: BMP transformer\n");
     #endif
@@ -53,8 +86,10 @@ int main()
     fclose(inputFilePointer);
 	for(int i =0; i < imageSize-2; i+=3)
 	{
-		printf("pixel %d: B= %d, G=%d, R=%d\n", i, inputPixels[i], inputPixels[i+1], inputPixels[i+2]);
+		printf("pixel %d: B= %d, G=%d, R=%d\n", i/3, inputPixels[i], inputPixels[i+1], inputPixels[i+2]);
 	}
+	
+	
    
     fclose(inputFilePointer);
     free(inputPixels);
@@ -95,6 +130,8 @@ int main()
 	}
 	
 	
+
+
 
 	
 	
@@ -142,4 +179,11 @@ int messageSize()
 	long int size = ftell(messagePointer);
 	fclose(messagePointer);
 	return size;
+}
+
+void printHelp()
+{
+	printf("%s\n" "Dit is de help\n -c = compress\n -s = input text file\n -i = input bmp file\n -o = output image name\n");
+	
+	
 }
